@@ -1,40 +1,21 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+const authRoutes = require('./routes/authRoutes');
+const quizRoutes = require('./routes/quizRoutes');
+require('dotenv').config();
 
 const app = express();
-const port = 3000;
+app.use(express.json());
 
+// Database connection
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch((error) => console.error('MongoDB connection error:', error));
 
-app.use(bodyParser.json());
-app.use(express.static('public')); 
+// Routes
+app.use('/auth', authRoutes);       // User login/register routes
+app.use('/quizzes', quizRoutes);    // Quiz creation and fetching routes
 
-
-mongoose.connect('mongodb://localhost:27017/qwizzie', { useNewUrlParser: true, useUnifiedTopology: true });
-
-
-const quizSchema = new mongoose.Schema({
-    title: String,
-    questions: [{
-        question: String,
-        options: [String],
-        correctAnswer: String
-    }]
-});
-
-const Quiz = mongoose.model('Quiz', quizSchema);
-
-app.post('/api/quizzes', async (req, res) => {
-    const newQuiz = new Quiz(req.body);
-    await newQuiz.save();
-    res.status(201).json(newQuiz);
-});
-
-app.get('/api/quizzes', async (req, res) => {
-    const quizzes = await Quiz.find();
-    res.status(200).json(quizzes);
-});
-
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-});
+// Start the server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
