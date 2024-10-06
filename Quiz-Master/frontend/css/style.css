@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100%;
+    font-family: "Fira Sans", sans-serif;
+    background-color: white;
+  }
+  
+  body {
+    font-family: "Fira Sans", sans-serif;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, #ffffff, rgba(64, 116, 199, 0.619));
+  }
+  
+  /* Header */
+  
+  header {
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 8px 30px;
+  }
+  
+  .logo a {
+    text-decoration: none;
+    font-size: 2.5rem;
+    font-weight: 600;
+    font-family: "Handjet", sans-serif;
+    color: rgba(64, 116, 199, 0.756);
+  }
+  
+  nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .button {
+    padding: 10px 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(64, 116, 199, 0.756);
+    background-color: rgba(64, 116, 199, 0.085);
+    cursor: pointer;
+    width: fit-content;
+  }
+  
+  .button1 {
+    padding: 10px 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 550;
+    background-color: rgba(64, 116, 199, 0.756);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    width: fit-content;
+  }
+
+  .button1:hover {
+    background-color: rgba(64, 116, 199, 0.66);
+  }
+
+  .button:hover {
+    background-color: rgba(64, 116, 199, 0.158);
+  }
+
+
+  /* Home Page */
+
+  #home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 650px;
+    gap: 15px;
+  }
+
+   /* Cube */
+   
+   .scene {
+    width: 50px;
+    height: 50px;
+    perspective: 200px;
+  }
+  
+  .cube {
+    width: 100%;
+    height: 100%;
+    position:relative;
+    transform-style: preserve-3d;
+    animation: rotate 10s infinite linear;
+    bottom: 55px;
+  }
+  
+  .face {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid rgb(123, 162, 225);
+    box-shadow: 0 0 15px rgb(64, 123, 218);
+  }
+  
+  .front  { transform: translateZ(30px); }
+  .back   { transform: rotateY(180deg) translateZ(30px); }
+  .left   { transform: rotateY(-90deg) translateZ(30px); }
+  .right  { transform: rotateY(90deg) translateZ(30px); }
+  .top    { transform: rotateX(90deg) translateZ(30px); }
+  .bottom { transform: rotateX(-90deg) translateZ(30px); }
+  
+  @keyframes rotate {
+    from {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+    to {
+      transform: rotateX(360deg) rotateY(360deg);
+    }
+  }
+
+  .welcome{
+    font-family: "Limelight", sans-serif;
+    font-weight: 400;
+    font-size: 3rem ;
+    color: rgba(64, 116, 199, 0.756);
+  }
+
+  .btn {
+    padding: 17px 100px;
+    background-color:rgba(64, 116, 199, 0.207);
+    color: rgb(255, 255, 255);
+    border: 1px, solid, rgb(64, 116, 199);
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    width: fit-content;
+  }
+
+  .btn:hover {
+    background: rgba(64, 116, 199, 0.529)
+  }
+
+  .card {
+    width: 46%;
+    margin: 0 auto;
+    position: absolute;
+    top: 54.5%;
+    right: 0;
+    transform: translate(0, -50%);
+  }
+
+  #img1 {
+    height: 91.4vh;
+  }
